@@ -4,7 +4,7 @@
 
 function makeOne() {
 	const paragraph = document.getElementById('practicum');
-	//Ваш код
+	paragraph.textContent = document.forms.length;
 }
 
 document.querySelector('.b-1').addEventListener('click', makeOne);
@@ -15,7 +15,7 @@ document.querySelector('.b-1').addEventListener('click', makeOne);
 
 function makeTwo() {
 	const paragraphTwo = document.getElementById('practicum2');
-	//Ваш код
+	paragraphTwo.textContent = document.forms[0].attributes["name"].value;
 }
 
 document.querySelector('.b-2').addEventListener('click', makeTwo);
@@ -26,7 +26,7 @@ document.querySelector('.b-2').addEventListener('click', makeTwo);
 
 function makeThree() {
 	const paragraphThree = document.getElementById('practicum3');
-	//Ваш код
+	paragraphThree.textContent = document.forms[document.forms.length-1].attributes["name"].value;
 }
 
 document.querySelector('.b-3').addEventListener('click', makeThree);
@@ -45,7 +45,12 @@ document.querySelector('.b-3').addEventListener('click', makeThree);
 
 function makeFour() {
 	const paragraphFour = document.getElementById('practicum4');
-	//Ваш код
+	let formNames = [];
+	for (i=0; i < document.forms.length; i++) {
+		formNames.push(document.forms[i].attributes["name"].value);
+		
+	}
+	paragraphFour.textContent = formNames.join(', ');
 }
 
 document.querySelector('.b-4').addEventListener('click', makeFour);
@@ -57,7 +62,8 @@ document.querySelector('.b-4').addEventListener('click', makeFour);
 
 function makeFive() {
 	const paragraphFive = document.getElementById('practicum5');
-	//Ваш код
+	const formThree = document.forms.formThree;
+	paragraphFive.textContent = formThree.elements.length;
 }
 
 document.querySelector('.b-5').addEventListener('click', makeFive);
@@ -68,7 +74,8 @@ document.querySelector('.b-5').addEventListener('click', makeFive);
 
 function makeSix() {
 	const paragraphSix = document.getElementById('practicum6');
-	//Ваш код
+	const formTwo = document.forms.formTwo;
+	paragraphSix.textContent = formTwo.elements.length;
 }
 
 document.querySelector('.b-6').addEventListener('click', makeSix);
@@ -86,8 +93,14 @@ document.querySelector('.b-6').addEventListener('click', makeSix);
 
 function makeSeven() {
 	const paragraphSeven = document.getElementById('practicum7');
-	//Ваш код
+	let elementsList = '';
+	for (i=0; i < document.forms[1].elements.length; i++) {
+		elementsList += `-${document.forms[1].elements[i].attributes["name"].value}`;
+		
+	}
+	paragraphSeven.textContent = elementsList;
 }
+
 
 document.querySelector('.b-7').addEventListener('click', makeSeven);
 
@@ -96,7 +109,9 @@ document.querySelector('.b-7').addEventListener('click', makeSeven);
 
 function makeEight() {
 	const paragraphEight = document.getElementById('practicum8');
-	//Ваш код
+	const elementsArray = Array.from(document.forms[0].elements);
+	const elementsList = elementsArray.map(element => element.name);
+	paragraphEight.textContent = elementsList;
 }
 
 document.querySelector('.b-8').addEventListener('click', makeEight);
@@ -106,7 +121,9 @@ document.querySelector('.b-8').addEventListener('click', makeEight);
 
 function makeNine() {
 	const paragraphNine = document.getElementById('practicum9');
-	//Ваш код
+	const elementsArray = Array.from(document.forms[2].elements);
+	const elementsList = elementsArray.map(element => element.name);
+	paragraphNine.textContent = elementsList;
 }
 
 document.querySelector('.b-9').addEventListener('click', makeNine);
