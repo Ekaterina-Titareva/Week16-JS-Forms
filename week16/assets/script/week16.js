@@ -134,7 +134,7 @@ document.querySelector('.b-9').addEventListener('click', makeNine);
 
 function makeTen() {
 	const paragraphTen = document.getElementById('practicum10');
-	//Ваш код
+	paragraphTen.textContent = document.forms[3].elements.fourthName.value;
 }
 
 document.querySelector('.b-10').addEventListener('click', makeTen);
@@ -151,7 +151,14 @@ document.querySelector('.b-10').addEventListener('click', makeTen);
 
 function makeEleven() {
 	const paragraphEleven = document.getElementById('practicum11');
-	//Ваш код
+	const formFirst = document.forms[0];
+	const formSelect = formFirst.elements.firstSelect;
+	let optionsValues = '';
+	for (let i = 0; i < formSelect.length; i++) {
+		optionsValues += `${formSelect.options[i].value} `;
+	}
+	paragraphEleven.textContent = optionsValues;
+
 }
 
 document.querySelector('.b-11').addEventListener('click', makeEleven);
@@ -165,7 +172,11 @@ document.querySelector('.b-11').addEventListener('click', makeEleven);
 
 function makeTwelve() {
 	const paragraphTwelve = document.getElementById('practicum12');
-	//Ваш код
+	const formSecond = document.forms[1];
+	const CheckBoxOne = formSecond.elements[2];
+	const CheckBoxTwo = formSecond.elements[3];
+	const CheckBoxThree = formSecond.elements[4];
+	paragraphTwelve.textContent = `${CheckBoxOne.id}, ${CheckBoxTwo.id}, ${CheckBoxThree.id}`;
 }
 
 document.querySelector('.b-12').addEventListener('click', makeTwelve);
@@ -183,7 +194,13 @@ function checkButton(e) {
 	e.preventDefault();
 
 	const paragraphThirteen = document.getElementById('practicum13');
-	//Ваш код
+	const formFirst = document.forms[3];
+	const radio = formFirst.elements.fourthName;
+	if (radio.checked) {
+		paragraphThirteen.textContent = "Кнопка выбрана";
+	  } else {
+		paragraphThirteen.textContent = "Кнопка не выбрана";
+	  }
 }
 
 document.querySelector('.b-13').addEventListener('click', checkButton);
@@ -199,9 +216,14 @@ document.querySelector('.b-13').addEventListener('click', checkButton);
 
 function checkOption() {
 	const paragraphFourteen = document.getElementById('practicum14');
-	//Ваш код
+	const formFirst = document.forms[0];
+	const formSelect = formFirst.elements.firstSelect;
+	for (let i = 0; i < formSelect.length; i++) {
+		if (formSelect.options[i].selected) {
+			paragraphFourteen.textContent = formSelect.options[i].value;
+		}
+	}
 }
-
 document.querySelector('.b-14').addEventListener('click', checkOption);
 
 //Задание 15
@@ -213,10 +235,14 @@ document.querySelector('.b-14').addEventListener('click', checkOption);
 //- Установите значение selectedIndex равным индексу опции, которую вы хотите выбрать по умолчанию
 
 function makeFifteen() {
-	//Ваш код
+	const formFirst = document.forms[0];
+	const formSelect = formFirst.elements.firstSelect;
+	return formSelect.selectedIndex = 2;
+
 }
 
 makeFifteen();
+
 
 //Задание 16
 //Добавьте во вторую форму выбранный Вариант 3 по умолчанию
@@ -227,7 +253,8 @@ makeFifteen();
 //- Установите значение checked равным true для выбранного варианта
 
 function makeSixteen() {
-	//Ваш код
+	const formSecond = document.forms[1];
+	return formSecond.elements[3].checked = true;
 }
 
 makeSixteen();
@@ -244,9 +271,16 @@ makeSixteen();
 
 formOne.addEventListener('submit', function (event) {
 	event.preventDefault(); //Отмена отправки
-
+	const paragraphSeventeen = document.getElementById('errorMessage');
+	paragraphSeventeen.textContent = '';
 	const formOne = document.forms.formOne;
-	//Ваш код
+	const firstName = formOne.firstName.value;
+	const firstEmail = formOne.firstEmail.value;
+	const firstSelect = formOne.firstSelect.value;
+	if (firstName ==='' || firstEmail ==='' || firstSelect === '') {
+		paragraphSeventeen.textContent = 'Заполнены не все поля';
+		return ;
+	}
 });
 
 //Задание 18
@@ -257,7 +291,20 @@ formOne.addEventListener('submit', function (event) {
 //- Добавьте слушатель события addEventListener на первую форму, как вы делали в задании 17
 //- В обработчике события вызовите метод event.preventDefault() для отмены отправки формы в случае ошибки
 
-//Ваш код
+formOne.addEventListener('submit', function (event) {
+	event.preventDefault(); //Отмена отправки
+	const paragraphSeventeen = document.getElementById('errorMessage');
+	paragraphSeventeen.textContent = '';
+	const formOne = document.forms.formOne;
+	const firstName = formOne.firstName.value;
+	const firstEmail = formOne.firstEmail.value;
+	const firstSelect = formOne.firstSelect.value;
+	if (firstName ==='' || firstEmail ==='' || firstSelect === '') {
+		paragraphSeventeen.textContent = 'Заполнены не все поля';
+		return ;
+	}
+formOne.reset();
+});
 
 //Задание 19
 //При выборе определенной опции из выпадающего списка измените цвет фона страницы
@@ -267,9 +314,15 @@ formOne.addEventListener('submit', function (event) {
 //- В обработчике события, используя условные операторы (if), проверьте выбранную опцию
 //- В зависимости от выбранной опции, измените цвет фона страницы, используя свойство document.body.style.backgroundColor
 
-const selectElement = document.getElementById('colorSelector');
-
-//Ващ код
+const selectElement = document.getElementById('firstSelect');
+formOne.addEventListener('change', function () {
+	if (selectElement.options[0].selected) {
+		selectElement.style.backgroundColor = 'red';
+	} else if (selectElement.options[1].selected) {
+		selectElement.style.backgroundColor = 'green';
+	} else {selectElement.style.backgroundColor = 'blue';
+	}
+})
 
 //Задание 20
 //Добавьте валидацию для поля Email
