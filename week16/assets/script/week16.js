@@ -198,9 +198,9 @@ function checkButton(e) {
 	const radio = formFirst.elements.fourthName;
 	if (radio.checked) {
 		paragraphThirteen.textContent = "Кнопка выбрана";
-	  } else {
+	} else {
 		paragraphThirteen.textContent = "Кнопка не выбрана";
-	  }
+	}
 }
 
 document.querySelector('.b-13').addEventListener('click', checkButton);
@@ -335,75 +335,104 @@ formOne.addEventListener('change', function () {
 
 const emailInput = document.forms.formOne.elements.firstEmail;
 const errorMessage = document.getElementById('errorMessage');
+emailInput.addEventListener('input', function () {
+	const emailValue = emailInput.value;
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-//Ваш код
+	if (emailRegex.test(emailValue)) {
+	  // Если email соответствует формату, убираем сообщение об ошибке
+		emailInput.classList.remove('error-message');
+		errorMessage.textContent = '';
+	} else {
+	  // Если email не соответствует формату, показываем сообщение об ошибке
+		emailInput.classList.add('error-message');
+		errorMessage.textContent = 'Некорректный формат Email';
+	}
+});
 
 //Задание 21
 //При отправке второй формы выполните проверку всех чекбоксов. Если ни один из чекбоксов не выбран, отмените отправку формы и выведите сообщение об ошибке в элементе с id "result21".
-
+const result21 = document.getElementById('result21');
 document.forms.formTwo.addEventListener('submit', function (evt) {
 	evt.preventDefault();
-
+	result21.textContent = '';
 	const checkbox1 = document.getElementById('checkbox1').checked;
 	const checkbox2 = document.getElementById('checkbox2').checked;
 	const checkbox3 = document.getElementById('checkbox3').checked;
-	//Ваш код
+	if (checkbox1 === false && checkbox2 === false && checkbox3 === false) {
+		result21.textContent = 'Не выбран ни один вариант';
+		return;
+	}
 });
 
 //Задание 22
 //При отправке третьей формы выполните проверку поля Имя на заполненность. Если поле Имя пустое, отмените отправку формы и выведите сообщение об ошибке в элементе с id "result22".
-
+const result22 = document.getElementById('result22');
 document.querySelector('.b-22').onclick = function (event) {
+	event.preventDefault();
+	result22.textContent = '';
 	const nameInput = document.forms.formThree.elements.thirdName;
-	//Ваш код
-};
+	if (nameInput.value === '') {
+		result22.textContent = 'Введите Ваше имя';
+		return;
+	};
+}
 
 //Задание 23
 //При выборе опции "Я хочу зарегистрироваться" в четвёртой форме кнопка должна быть разблокирована. В противном случае, сделайте кнопку отправки формы заблокированной.
 //Подсказка: используйте свойство disabled
+  // Разблокируем или блокируем кнопку в зависимости от состояния чекбокса
+	// Получаем кнопку отправки и чекбокс
+	let submitBtn = document.forms[3].elements.fourthButton;
+	let agreeTermsCheckbox = document.forms[3].elements.fourthName;
+	submitBtn.disabled = true;
+document.forms[3].elements.fourthName.addEventListener("change", function () {
+	if (agreeTermsCheckbox.checked === true) {
+		submitBtn.disabled = false;
+	}
+});
 
 //Задание 24
 //Найдите все поля ввода на странице (querySelectorAll) и установите им атрибут "placeholder" со значением "Введите данные" (используйте метод forEach).
 
 document.querySelector('.b-24').addEventListener('click', function () {
-	//Ваш код
+	const inputs = document.querySelectorAll('input');
+	inputs.forEach(input => input.placeholder = 'Введите данные');
 });
 
 //Задание 25
 //При фокусе на любом поле ввода измените его границу на цвет "#00ff00". При потере фокуса восстановите стандартную границу.
 
-document.querySelector('.b-25').addEventListener('click', function () {
+document.querySelector('.b-25').addEventListener('focus', function () {
 	const inputs = document.querySelectorAll('input');
-
-	inputs.forEach(function (input) {
-		//Ваш код
-	});
+	inputs.forEach(input => input.style.border = "#00ff00")
 });
 
 //Задание 26
 //При нажатии на кнопку "Задание 26" отобразите в элементе с id "result26" значение placeholder из поля имя в третьей форме
-
+const result26 = document.getElementById('result26');
 document.querySelector('.b-26').addEventListener('click', function (event) {
 	event.preventDefault();
-	//Ваш код
+	result26.textContent = document.forms[2].elements.thirdName.attributes["placeholder"].value;
+
 });
 
 //Задание 27
 //При изменении значения любого из полей второй формы отобразите сообщение с текстом "Изменение внесено" в элементе с id "result27"
 
 const formTwoInputs = document.querySelectorAll('.secondForm input');
-
+const result27 = document.getElementById('result27');
 formTwoInputs.forEach(function (input) {
-	input.addEventListener('input', function () {
-		//Ваш код
+	input.addEventListener('change', function () {
+		result27.textContent = "Изменение внесено";
 	});
 });
 
 //Задание 28
 //При выборе любой из опций выпадающего списка в третьей форме отобразите сообщение с текстом "Опция выбрана" в элементе с id "result28"
-
+const result28 = document.getElementById('result28');
 const selectFormThree = document.getElementById('firstSelect');
 
 selectFormThree.addEventListener('change', function () {
-	//Ваш код
+	result28.textContent = "Опция выбрана";
 });
