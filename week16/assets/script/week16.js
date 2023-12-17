@@ -436,3 +436,5 @@ const selectFormThree = document.getElementById('firstSelect');
 selectFormThree.addEventListener('change', function () {
 	result28.textContent = "Опция выбрана";
 });
+
+reset

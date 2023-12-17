@@ -1,0 +1,87 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.container {
+display: flex;
+flex-direction: column;
+padding: 5%;
+align-items: center;
+gap: 20px;
+}
+
+
+.title {
+font-size: 42px;
+font-weight: 700;
+margin-bottom: 16px;
+text-shadow: 5px 5px rgba(0, 255, 94, 0.434);
+}
+
+.form {
+	display: block;
+	border: 1px dotted black;
+	padding: 20px;
+}
+
+.form__input {
+height: 38px;
+padding: 6px 10px;
+border-radius: 4px;
+width: 65%;
+}
+
+.form__label, .gender, .agreement {
+	margin-top: 1.5rem;
+	padding: 5px 0 0 10px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+	font-size: 20px;
+}
+
+.age, .password {
+	margin-bottom: 1.5rem;
+}
+
+.form__label {
+	display: block;
+}
+
+.select {
+	height: 38px;
+	padding: 5px;;
+}
+
+.form__submit {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+    height: 38px;
+	font-weight: 600;
+	background-color:  rgba(0, 255, 94, 0.434);
+	border: 1px solid  rgba(0, 255, 94, 0.434);
+	border-radius: 4px;
+}
+
+.form__submit:hover {
+	background-color:  rgba(17, 122, 55, 0.611);
+	border: 1px solid   rgba(17, 122, 55, 0.611);
+}
+
+.errorMessage {
+	color: red;
+	display: none;
+}
+	
+
+	
+/* input:valid, select:valid{
+	border: 1px solid #09bb4d;
+} 
+
+input:invalid, select:invalid{
+	border: 1px solid #900;
+	background-color: #fdd;
+} */
