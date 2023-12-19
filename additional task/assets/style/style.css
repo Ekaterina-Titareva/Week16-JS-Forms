@@ -1,0 +1,45 @@
+
+@font-face {
+    font-family: "NEXT ART";
+    src: url(../fonts/NEXTART_Bold.woff2) format("woff2"), url(../fonts/NEXTART_Bold.woff) format("woff");
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    src: url(../fonts/NunitoSans_Regular.woff2) format("woff2"), url(../fonts/NunitoSans_Regular.woff) format("woff");
+    font-weight: 400;
+}
+
+* {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    font-size: 24px;
+    box-sizing: border-box;
+
+}
+
+
+.title {
+    font-family: "NEXT ART", Arial, sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px rgba(16, 28, 190, 0.249);
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    padding: 0 25px;
+}
+
+.form__item {
+    margin: 20px 0;
+}
+
+.form__label {
+    display: block;
+    padding: 5px;
+    font-weight: 600;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Car rating calculator</title>
+	<link rel="stylesheet" href="./assets/style/normalize.css">
+	<link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body>
+	<h1 class="title">Rate your car in 1 minute</h1>
+	<section class="container">
+		<form>
+			<div class="form__item">
+				<label for="makesOfCar" class="form__label">Make:</label>
+				<select name="makesOfCar" id="makesOfCar" class="form__select" required>
+					<option name="nullOptionSelectMakes" value="">-- Choose the make of your car --</option>
+				</select>
+			</div>
+			<div class="form__item">
+				<label for="modelsOfCar" class="form__label">Model:</label>
+				<select name="modelsOfCar" id="modelsOfCar" class="form__select" required>
+					<option value="">-- Choose the model of your car --</option>
+				</select>
+			</div>
+			<div class="form__item">
+				<label for="typeOfFuel" class="form__label">Type of Fuel:</label>
+				<div class="checkbox__item">
+					<input type="checkbox" id="petrol" name="typeOfFuel" class="fuel" required>
+					<label for="petrol" class="checkbox__label">Petrol</label>
+				</div>
+				<div class="checkbox__item">
+					<input type="checkbox" id="electricity" name="typeOfFuel" class="fuel">
+					<label for="electricity" class="checkbox__label">Electricity</label>
+				</div>
+				<div class="checkbox__item">
+					<input type="checkbox" id="diesel" name="typeOfFuel" class="fuel">
+					<label for="diesel" class="checkbox__label">Diesel</label>
+				</div>
+				<div class="checkbox__item">
+					<input type="checkbox" id="gas" name="typeOfFuel" class="fuel">
+					<label for="gas" class="checkbox__label">Gas</label>
+				</div>
+			</div>
+			<div class="form__item">
+				<label for="engineCapacity" class="form__label">Engine Capacity, L:</label>
+				<input type="text" id="engineCapacity" name="engineCapacity" class="form__input" placeholder="1.6"
+					minlength="1" maxlength="3" required />
+			</div>
+			<div class="form__item">
+				<label for="conditionOfCar" class="form__label">Condition:</label>
+				<input type="radio" id="newCar" name="conditionOfCar" value="new" required>
+				<label for="newCar" class="condition">New</label>
+				<input type="radio" id="usedCar" name="conditionOfCar" value="used">
+				<label for="usedCar" class="condition">Used</label>
+			</div>
+			<div class="form__item">
+				<label for="paymentMethod" class="form__label">Payment method:</label>
+				<div class="radio__item">
+					<input type="radio" id="payByCard" name="paymentMethod" value="payByCard" required>
+					<label for="payByCard" class="payment">Pay by card</label>
+				</div>
+				<div class="radio__item">
+					<input type="radio" id="payInCash" name="paymentMethod" value="payInCash">
+					<label for="payInCash" class="payment">Pay in cash</label>
+				</div>
+				<div class="radio__item">
+					<input type="radio" id="invoice" name="paymentMethod" value="invoice">
+					<label for="invoice" class="payment">Invoice for a legal person</label>
+				</div>
+			</div>
+			<div class="form__item">
+				<label for="mileage" class="form__label">Mileage, km:</label>
+				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25" minlength="0"
+					maxlength="150000" required />
+			</div>
+		</form>
+	</section>
+	<script src="./assets/script/script.js"></script>
+</body>
+
+</html>

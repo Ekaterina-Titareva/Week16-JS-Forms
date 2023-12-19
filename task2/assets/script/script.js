@@ -33,19 +33,7 @@
     const errorAgreement = document.getElementById('errorAgreement');
 
 
-
 form.addEventListener('submit', function(evt) {
-
-if (agreementCheckbox.checked === false) {
-    errorAgreement.textContent = 'Confirm your agreement to the Terms and Privacy Policy';
-    errorAgreement.style.display = 'block';
-    document.forms[0].elements.submitBtn.disabled;
-    agreementCheckbox.addEventListener('change', function() {
-        document.forms[0].elements.submitBtn.enable;
-        errorAgreement.style.display = 'none'
-    });
-}
-
 let hasError = false;
 
 // Очистка предыдущих сообщений об ошибках
@@ -122,7 +110,18 @@ if (hasError !== false) {
     console.log(form.elements.occupation.value)
     console.log(form.elements.password.value)
     console.log("I agree")
-    alert('The form has been submitted successfully')
+    alert('Данные появляются в консоли, пока не нажмешь кнопку ОК в alert, почему так происходит?') //The form has been submitted successfully
 };
 form.reset();
+});
+
+agreementCheckbox.addEventListener('change', function() {
+    if (agreementCheckbox.checked === true) {
+        document.forms[0].elements.submitBtn.disabled = false;
+        errorAgreement.style.display = 'none'
+    } else {
+        document.forms[0].elements.submitBtn.disabled = true;
+        errorAgreement.textContent = 'Confirm your agreement to the Terms and Privacy Policy';
+        errorAgreement.style.display = 'block'
+    }
 });
