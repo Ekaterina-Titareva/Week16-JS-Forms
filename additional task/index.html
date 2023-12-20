@@ -28,19 +28,19 @@
 			<div class="form__item">
 				<label for="typeOfFuel" class="form__label">Type of Fuel:</label>
 				<div class="checkbox__item">
-					<input type="checkbox" id="petrol" value="petrol" name="typeOfFuel" class="fuel" required>
+					<input type="checkbox" id="petrol" value="700" name="typeOfFuel" class="fuel" required>
 					<label for="petrol" class="checkbox__label">Petrol</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="electricity" value="electricity" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="electricity" value="1000" name="typeOfFuel" class="fuel">
 					<label for="electricity" class="checkbox__label">Electricity</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="diesel" value="diesel" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="diesel" value="300" name="typeOfFuel" class="fuel">
 					<label for="diesel" class="checkbox__label">Diesel</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="gas" value="gas" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="gas" value="350" name="typeOfFuel" class="fuel">
 					<label for="gas" class="checkbox__label">Gas</label>
 				</div>
 			</div>
@@ -58,9 +58,9 @@
 			</div>
 			<div class="form__item used">
 				<label for="carOwners" class="form__label">The number of car owners:</label>
-				<input type="radio" id="oneTwoOwners" name="carOwners" value="oneTwoOwners" required>
+				<input type="radio" id="oneTwoOwners" name="carOwners" value="500" required>
 				<label for="oneTwoOwners" class="owners">1-2 car owners</label>
-				<input type="radio" id="threeMoreOwners" name="carOwners" value="threeMoreOwners">
+				<input type="radio" id="threeMoreOwners" name="carOwners" value="1000">
 				<label for="threeMoreOwners" class="owners">3 and more owners</label>
 			</div>
 			<div class="form__item">
@@ -82,6 +82,9 @@
 				<label for="mileage" class="form__label">Mileage, km:</label>
 				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25000" minlength="0"
 					maxlength="150000" required />
+			</div>
+			<div class="form__item">
+				<p class="total title"></p>
 			</div>
 		</form>
 	</section>

@@ -31,10 +31,17 @@ const form = document.forms[0];
 const selectMakes = form.elements.makesOfCar;
 const selectModels = form.elements.modelsOfCar;
 const conditionOfCar = form.elements.conditionOfCar;
-
+const typeOfFuel = form.elements.typeOfFuel;
+const engineCapacity = form.elements.engineCapacity;
+const carOwners = form.elements.carOwners;
+const mileage = form.elements.mileage;
 const classNameUsed = document.querySelector(".used");
+const total = document.querySelector(".total");
+
 
 const makesOfCar = ["Mazda", "Lada", "BMW", "Mercedes", "Audi"];
+
+
 
 const modelsOfMazda = ["CX-4", "CX-5", "MX-30", "3", "5"];
 const pricesOfMazda = [40000, 50000, 35000, 20000, 45000];
@@ -49,6 +56,8 @@ const pricesOfAudi = [55000, 45000, 40000, 55000, 35000];
 
 const modelsOfCar = [modelsOfMazda, modelsOfLada, modelsOfBMW, modelsOfMercedes, modelsOfAudi];
 const pricesOfCar = [pricesOfMazda, pricesOfLada, pricesOfBMW, pricesOfMercedes, pricesOfAudi];
+
+
 
 function removeElementsByClass(elementsClassName){
     const elements = document.getElementsByClassName(elementsClassName);
@@ -72,7 +81,6 @@ selectMakes.addEventListener("change", function(value){
 
 	let index = selectMakes.value;
 	addOptions(selectModels, modelsOfCar[index], classNameModel);
-
 }
 )
 
@@ -89,34 +97,92 @@ conditionOfCar[0].addEventListener("change", function(evt){
 	if (evt.target.value === "new") {
 		classNameUsed.classList.add("used");
 	}
-	})
+})
+
+
+
+
+let engineCapacityValue;
+let priceOfCar;
+let pricesListOfCar;
 
 
 
 form.addEventListener("change", function calculatePrice(event) {
-	// console.log(selectMakes.value)
-	// console.log(makesOfCar.value)
-	if (event.target.name === "makesOfCar") {
-		let makeIndex = event.target.value;
-		console.log(makeIndex);
-				let pricesListOfCar = pricesOfCar[makeIndex]
-				console.log(pricesListOfCar);
-		if (event.target.name === "modelsOfCar") {
-			let modelIndex = event.target.value;
-			console.log(modelIndex);
-			console.log(pricesListOfCar[modelIndex]); 
-			// Как получить цену машины выбранной модели? этот код не работает (видимо event не доходит до условия внутри условию)
-		};
-	};
 
-	if (event.target.name === "typeOfFuel") {console.log(`Type of Fuel: ${event.target.value}`)};
-	if (event.target.name === "engineCapacity") {console.log(`Engine Capacity, L: ${event.target.value}`)};
-	if (event.target.name === "conditionOfCar") {console.log(`Condition of your Car: ${event.target.value}`)};
-	if (event.target.name === "paymentMethod") {console.log(`Payment Method: ${event.target.value}`)};
-	if (event.target.name === "mileage") {console.log(`Mileage, km: ${event.target.value}`)};
-})
+if (event.target.name === "makesOfCar") {
+    let makeIndex = event.target.value;
+    // console.log(makeIndex);
+    pricesListOfCar = pricesOfCar[makeIndex];
+    // console.log("pricesListOfCar");
+    // console.log(pricesListOfCar);
+    // console.log(event.target);
+	priceOfCar = '';
+}
+if (event.target.name === "modelsOfCar") {
+    let modelIndex = event.target.value;
+    // console.log(modelIndex);
+    // console.log(pricesListOfCar);
+    // console.log(pricesListOfCar[modelIndex]);
+	priceOfCar = pricesListOfCar[modelIndex];
+}
 
-// марка, модель, тип топлива, объем двигателя, состояние автомобиля, количество владельцев, способ оплаты
+if (event.target.name === "typeOfFuel" ) {
+	// console.log(event.target.checked);
+	if (event.target.checked === true) { priceOfCar += parseFloat(event.target.value); 
+		console.log(priceOfCar);
+		return priceOfCar;
+	} else if (event.target.checked === false) {priceOfCar -= parseFloat(event.target.value);
+		console.log(priceOfCar);
+		return priceOfCar;}
+	}
 
-//Не понимаю, как это осуществить:
-// Используя полученные значения, расчетом определите стоимость автомобиля в зависимости от выбранных параметров
+if (event.target.name === "engineCapacity") {
+    console.log(`Engine Capacity, L: ${event.target.value}`);
+	if (event.target.value !== ''){
+	engineCapacityValue = event.target.value;
+	priceOfCar += parseFloat(engineCapacityValue * 100);
+	console.log(priceOfCar);
+        engineCapacity.disabled = true;
+		}
+    // } else if (event.target.value === ''){engineCapacity.disabled = false;}
+}
+
+
+if (event.target.name === "conditionOfCar") {
+    console.log(`Condition of your Car: ${event.target.value}`);
+	if (event.target.value === 'used'){
+		priceOfCar = priceOfCar*0.7;
+	}
+}
+
+if (event.target.name === "carOwners") {
+	console.log(`The number of car owners: ${event.target.value}`);
+	console.log(event.target.checked);
+	if (event.target.checked === true) { priceOfCar -= parseFloat(event.target.value); 
+		console.log(priceOfCar);
+		carOwners[0].disabled = true;
+		return priceOfCar;
+	} else if (event.target.checked === false) {priceOfCar += parseFloat(event.target.value);
+		console.log(priceOfCar);
+		carOwners[0].disabled = true;
+		return priceOfCar;}
+}
+
+
+if (event.target.name === "paymentMethod") {
+    console.log(`Payment Method: ${event.target.value}`);
+}
+
+
+if (event.target.name === "mileage") {
+    console.log(`Mileage, km: ${event.target.value}`);
+	priceOfCar = priceOfCar - event.target.value*0.1;
+	console.log(priceOfCar);
+	mileage.disabled = true;
+	
+}
+
+total.textContent = `Your car rate is about ${priceOfCar.toLocaleString('en-US')}\$`
+
+});
