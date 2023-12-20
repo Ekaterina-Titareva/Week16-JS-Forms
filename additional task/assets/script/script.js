@@ -25,29 +25,38 @@
 //     4. Добавьте стили к калькулятору, чтобы он выглядел привлекательно и был легко использовать
     
 //     Успешное выполнение задания предполагает правильный расчёт стоимости автомобиля в зависимости от выбранных параметров, обработку ошибок, динамическое обновление списка моделей и привлекательный дизайн калькулятора.
+
 const form = document.forms[0];
-const nullOptionSelectMakes = form.elements.makesOfCar[0];
-console.log(nullOptionSelectMakes);
-const selectMakes = document.getElementById('makesOfCar');
-const selectModels = document.getElementById('modelsOfCar');
-const addOption = document.createElement("option");
 
-console.log(selectMakes);
-console.log(selectModels);
-console.log(addOption);
+const selectMakes = form.elements.makesOfCar;
+const selectModels = form.elements.modelsOfCar;
+const conditionOfCar = form.elements.conditionOfCar;
 
-let makesOfCar = ["Mazda", "Lada", "BMW", "Mercedes", "Audi"];
+const classNameUsed = document.querySelector(".used");
 
-let modelsOfMazda = ["CX-4", "CX-5", "MX-30", "3", "5"];
-let modelsOfLada = ["XRay","Vesta", "Granta", "Niva", "Largus"];
-let modelsOfBMW = ["i7", "iX1", "XM", "iX", "iX3"]; 
-let modelsOfMercedes = ["EQS SUV", "CLE", "EQE", "CLS", "E-CLASS"];
-let modelsOfAudi = ["Q6", "Q5 e-TRON", "A8", "Q8 e-TRON SPORTBACK", "Q5"];
+const makesOfCar = ["Mazda", "Lada", "BMW", "Mercedes", "Audi"];
 
-let modelsOfCar = [modelsOfMazda, modelsOfLada, modelsOfBMW, modelsOfMercedes, modelsOfAudi];
+const modelsOfMazda = ["CX-4", "CX-5", "MX-30", "3", "5"];
+const pricesOfMazda = [40000, 50000, 35000, 20000, 45000];
+const modelsOfLada = ["XRay","Vesta", "Granta", "Niva", "Largus"];
+const pricesOfLada = [25000, 25000, 20000, 18000, 15000];
+const modelsOfBMW = ["i7", "iX1", "XM", "iX", "iX3"]; 
+const pricesOfBMW = [55000, 35000, 30000, 30000, 50000];
+const modelsOfMercedes = ["EQS SUV", "CLE", "EQE", "CLS", "E-CLASS"];
+const pricesOfMercedes = [50000, 45000, 35000, 40000, 45000];
+const modelsOfAudi = ["Q6", "Q5 e-TRON", "A8", "Q8 e-TRON SPORTBACK", "Q5"];
+const pricesOfAudi = [55000, 45000, 40000, 55000, 35000];
 
-console.log(makesOfCar);
-console.log(modelsOfCar);
+const modelsOfCar = [modelsOfMazda, modelsOfLada, modelsOfBMW, modelsOfMercedes, modelsOfAudi];
+const pricesOfCar = [pricesOfMazda, pricesOfLada, pricesOfBMW, pricesOfMercedes, pricesOfAudi];
+
+function removeElementsByClass(elementsClassName){
+    const elements = document.getElementsByClassName(elementsClassName);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
 
 function addOptions(select, array, className) {
 for (let index = 0; index < array.length; index++) {
@@ -58,29 +67,56 @@ for (let index = 0; index < array.length; index++) {
 addOptions(selectMakes, makesOfCar);
 
 selectMakes.addEventListener("change", function(value){
-	
-function removeElementsByClass(elementsClassName){
-    const elements = document.getElementsByClassName(elementsClassName);
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-}
+	const classNameModel = "class = 'model'";
 	removeElementsByClass('model');
 
-	const classNameModel = "class = 'model'";
-
 	let index = selectMakes.value;
-
 	addOptions(selectModels, modelsOfCar[index], classNameModel);
-
-	let models = document.getElementsByClassName('model');
 
 }
 )
 
+const ifConditionUsed = document.querySelector(".ifConditionUsed");
 
-/* <label for="carOwners" class="form__label">The number of car owners:</label>
-<input type="radio" id="oneTwoOwners" name="carOwners" value="oneTwoOwners" required>
-<label for="oneTwoOwners" class="owners">1-2 car owners</label>
-<input type="radio" id="threeMoreOwners" name="carOwners" value="threeMoreOwners">
-<label for="threeMoreOwners" class="owners">3 and more owners</label> */
+
+conditionOfCar[1].addEventListener("change", function(evt){
+if (evt.target.value === "used") {
+	classNameUsed.classList.remove("used");
+}
+})
+
+conditionOfCar[0].addEventListener("change", function(evt){
+	if (evt.target.value === "new") {
+		classNameUsed.classList.add("used");
+	}
+	})
+
+
+
+form.addEventListener("change", function calculatePrice(event) {
+	// console.log(selectMakes.value)
+	// console.log(makesOfCar.value)
+	if (event.target.name === "makesOfCar") {
+		let makeIndex = event.target.value;
+		console.log(makeIndex);
+				let pricesListOfCar = pricesOfCar[makeIndex]
+				console.log(pricesListOfCar);
+		if (event.target.name === "modelsOfCar") {
+			let modelIndex = event.target.value;
+			console.log(modelIndex);
+			console.log(pricesListOfCar[modelIndex]); 
+			// Как получить цену машины выбранной модели? этот код не работает (видимо event не доходит до условия внутри условию)
+		};
+	};
+
+	if (event.target.name === "typeOfFuel") {console.log(`Type of Fuel: ${event.target.value}`)};
+	if (event.target.name === "engineCapacity") {console.log(`Engine Capacity, L: ${event.target.value}`)};
+	if (event.target.name === "conditionOfCar") {console.log(`Condition of your Car: ${event.target.value}`)};
+	if (event.target.name === "paymentMethod") {console.log(`Payment Method: ${event.target.value}`)};
+	if (event.target.name === "mileage") {console.log(`Mileage, km: ${event.target.value}`)};
+})
+
+// марка, модель, тип топлива, объем двигателя, состояние автомобиля, количество владельцев, способ оплаты
+
+//Не понимаю, как это осуществить:
+// Используя полученные значения, расчетом определите стоимость автомобиля в зависимости от выбранных параметров

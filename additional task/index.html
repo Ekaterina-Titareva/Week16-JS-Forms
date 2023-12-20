@@ -16,7 +16,7 @@
 			<div class="form__item">
 				<label for="makesOfCar" class="form__label">Make:</label>
 				<select name="makesOfCar" id="makesOfCar" class="form__select" required>
-					<option name="nullOptionSelectMakes" value="">-- Choose the make of your car --</option>
+					<option value="">-- Choose the make of your car --</option>
 				</select>
 			</div>
 			<div class="form__item">
@@ -28,19 +28,19 @@
 			<div class="form__item">
 				<label for="typeOfFuel" class="form__label">Type of Fuel:</label>
 				<div class="checkbox__item">
-					<input type="checkbox" id="petrol" name="typeOfFuel" class="fuel" required>
+					<input type="checkbox" id="petrol" value="petrol" name="typeOfFuel" class="fuel" required>
 					<label for="petrol" class="checkbox__label">Petrol</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="electricity" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="electricity" value="electricity" name="typeOfFuel" class="fuel">
 					<label for="electricity" class="checkbox__label">Electricity</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="diesel" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="diesel" value="diesel" name="typeOfFuel" class="fuel">
 					<label for="diesel" class="checkbox__label">Diesel</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="gas" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="gas" value="gas" name="typeOfFuel" class="fuel">
 					<label for="gas" class="checkbox__label">Gas</label>
 				</div>
 			</div>
@@ -49,12 +49,19 @@
 				<input type="text" id="engineCapacity" name="engineCapacity" class="form__input" placeholder="1.6"
 					minlength="1" maxlength="3" required />
 			</div>
-			<div class="form__item">
+			<div class="form__item ifConditionUsed">
 				<label for="conditionOfCar" class="form__label">Condition:</label>
-				<input type="radio" id="newCar" name="conditionOfCar" value="new" required>
+				<input type="radio" id="newCar" name="conditionOfCar" value="new" required checked>
 				<label for="newCar" class="condition">New</label>
 				<input type="radio" id="usedCar" name="conditionOfCar" value="used">
 				<label for="usedCar" class="condition">Used</label>
+			</div>
+			<div class="form__item used">
+				<label for="carOwners" class="form__label">The number of car owners:</label>
+				<input type="radio" id="oneTwoOwners" name="carOwners" value="oneTwoOwners" required>
+				<label for="oneTwoOwners" class="owners">1-2 car owners</label>
+				<input type="radio" id="threeMoreOwners" name="carOwners" value="threeMoreOwners">
+				<label for="threeMoreOwners" class="owners">3 and more owners</label>
 			</div>
 			<div class="form__item">
 				<label for="paymentMethod" class="form__label">Payment method:</label>
@@ -73,7 +80,7 @@
 			</div>
 			<div class="form__item">
 				<label for="mileage" class="form__label">Mileage, km:</label>
-				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25" minlength="0"
+				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25000" minlength="0"
 					maxlength="150000" required />
 			</div>
 		</form>
