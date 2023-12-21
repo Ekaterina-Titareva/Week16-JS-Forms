@@ -11,8 +11,8 @@
 
 <body>
 	<h1 class="title">Rate your car in 1 minute</h1>
-	<section class="container">
-		<form>
+	<section>
+		<form class="container" novalidate>
 			<div class="form__item">
 				<label for="makesOfCar" class="form__label">Make:</label>
 				<select name="makesOfCar" id="makesOfCar" class="form__select" required>
@@ -28,63 +28,66 @@
 			<div class="form__item">
 				<label for="typeOfFuel" class="form__label">Type of Fuel:</label>
 				<div class="checkbox__item">
-					<input type="checkbox" id="petrol" value="700" name="typeOfFuel" class="fuel" required>
+					<input type="checkbox" id="petrol" value="700" name="typeOfFuel" class="fuel" required />
 					<label for="petrol" class="checkbox__label">Petrol</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="electricity" value="1000" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="electricity" value="1000" name="typeOfFuel" class="fuel" />
 					<label for="electricity" class="checkbox__label">Electricity</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="diesel" value="300" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="diesel" value="300" name="typeOfFuel" class="fuel" />
 					<label for="diesel" class="checkbox__label">Diesel</label>
 				</div>
 				<div class="checkbox__item">
-					<input type="checkbox" id="gas" value="350" name="typeOfFuel" class="fuel">
+					<input type="checkbox" id="gas" value="350" name="typeOfFuel" class="fuel" />
 					<label for="gas" class="checkbox__label">Gas</label>
 				</div>
 			</div>
 			<div class="form__item">
 				<label for="engineCapacity" class="form__label">Engine Capacity, L:</label>
 				<input type="text" id="engineCapacity" name="engineCapacity" class="form__input" placeholder="1.6"
-					minlength="1" maxlength="3" required />
+					minlength="1" maxlength="3" value="1.6" required />
+				<p id="errorEngineCapacity" class="errorMessage"></p>
 			</div>
 			<div class="form__item ifConditionUsed">
 				<label for="conditionOfCar" class="form__label">Condition:</label>
-				<input type="radio" id="newCar" name="conditionOfCar" value="new" required checked>
+				<input type="radio" id="newCar" name="conditionOfCar" value="new" checked />
 				<label for="newCar" class="condition">New</label>
-				<input type="radio" id="usedCar" name="conditionOfCar" value="used">
+				<input type="radio" id="usedCar" name="conditionOfCar" value="used" required />
 				<label for="usedCar" class="condition">Used</label>
 			</div>
 			<div class="form__item used">
 				<label for="carOwners" class="form__label">The number of car owners:</label>
-				<input type="radio" id="oneTwoOwners" name="carOwners" value="500" required>
+				<input type="radio" id="oneTwoOwners" name="carOwners" value="5000" required />
 				<label for="oneTwoOwners" class="owners">1-2 car owners</label>
-				<input type="radio" id="threeMoreOwners" name="carOwners" value="1000">
+				<input type="radio" id="threeMoreOwners" name="carOwners" value="10000" />
 				<label for="threeMoreOwners" class="owners">3 and more owners</label>
+			</div>
+			<div class="form__item">
+				<label for="mileage" class="form__label">Mileage, km:</label>
+				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25000" required />
+				<p id="errorMileage" class="errorMessage"></p>
 			</div>
 			<div class="form__item">
 				<label for="paymentMethod" class="form__label">Payment method:</label>
 				<div class="radio__item">
-					<input type="radio" id="payByCard" name="paymentMethod" value="payByCard" required>
-					<label for="payByCard" class="payment">Pay by card</label>
+					<input type="radio" id="payByCard" name="paymentMethod" value="payByCard" required />
+					<label for="payByCard" class="payment">Payment by card</label>
 				</div>
 				<div class="radio__item">
-					<input type="radio" id="payInCash" name="paymentMethod" value="payInCash">
-					<label for="payInCash" class="payment">Pay in cash</label>
+					<input type="radio" id="payInCash" name="paymentMethod" value="payInCash" />
+					<label for="payInCash" class="payment">Payment in cash</label>
 				</div>
 				<div class="radio__item">
-					<input type="radio" id="invoice" name="paymentMethod" value="invoice">
+					<input type="radio" id="invoice" name="paymentMethod" value="invoice" />
 					<label for="invoice" class="payment">Invoice for a legal person</label>
 				</div>
 			</div>
 			<div class="form__item">
-				<label for="mileage" class="form__label">Mileage, km:</label>
-				<input type="number" id="mileage" name="mileage" class="form__input" placeholder="25000" minlength="0"
-					maxlength="150000" required />
-			</div>
-			<div class="form__item">
 				<p class="total title"></p>
+				<p class="paymentMethodText"></p>
+				<button class="reset" name="reset">Reset to the initial values</button>
 			</div>
 		</form>
 	</section>
